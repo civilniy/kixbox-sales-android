@@ -1,0 +1,4 @@
+# Добавить в /etc/cloudflared/config.yml в список ingress ПЕРЕД последним правилом
+# (http_status:404). Имя хоста можно поменять.
+  - hostname: pulse.civi1.ru
+    service: http://127.0.0.1:8095

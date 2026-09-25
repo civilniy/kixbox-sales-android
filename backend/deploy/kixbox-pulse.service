@@ -1,0 +1,14 @@
+[Unit]
+Description=KIXBOX Pulse API
+After=network-online.target clickhouse-server.service
+
+[Service]
+WorkingDirectory=/opt/kixbox-pulse/backend
+EnvironmentFile=/opt/kixbox-pulse/backend/.env
+Environment=PYTHONUNBUFFERED=1 TZ=Europe/Moscow
+ExecStart=/opt/kixbox-pulse/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8095 --proxy-headers
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
